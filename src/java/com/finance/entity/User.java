@@ -8,15 +8,19 @@ package com.finance.entity;
 
 import com.finance.database.DatabaseConnection;
 import java.awt.BorderLayout;
+import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
+import javax.json.stream.JsonParser;
 
 /**
  *
@@ -91,6 +95,53 @@ public class User {
             return result;            
         } catch (SQLException ex) {
             System.out.println("Exception raised in checkUser: " + ex.getMessage());
+            return null;
+        }
+        
+    }
+
+    public String addUser(String userDetails) {
+        JsonParser parser = Json.createParser(new StringReader(userDetails));
+        Map<String, String> map = new HashMap<>();
+        String name = "", value;
+        while (parser.hasNext()) {
+            JsonParser.Event evt = parser.next();
+            switch (evt) {
+                case KEY_NAME:
+                    name = parser.getString();
+                    break;
+                case VALUE_STRING:
+                    value = parser.getString();
+                    map.put(name, value);
+                    break;
+                case VALUE_NUMBER:
+                    value = Integer.toString(parser.getInt());
+                    map.put(name, value);
+                    break;
+            }
+        }
+        int changes = 0;
+        String user = map.get("name");
+        String password = map.get("password");
+        String security_question = map.get("question");
+        String security_answer = map.get("answer");
+        String query = "INSERT INTO users (name, password, security_question, security_answer) VALUES (?, ?, ?, ?)";
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, user);
+            pstmt.setString(2, password);
+            pstmt.setString(3, security_question);
+            pstmt.setString(4, security_answer);
+            changes = pstmt.executeUpdate();
+            if(changes > 0){
+                return "1";
+            }
+            else{
+                return "0";
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("Sql Exception: " + ex.getMessage());
             return null;
         }
         
