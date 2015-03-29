@@ -144,8 +144,7 @@ public class Income {
                 System.out.println("Sql Exception: " + ex.getMessage());
                 return "fail";
             }
-        }
-        else{
+        } else {
             String query = "update income set budget = ?, start_date = now(), amount = ? where id = ?";
             try (Connection connection = DatabaseConnection.getConnection()) {
                 PreparedStatement pstmt = connection.prepareStatement(query);
@@ -162,7 +161,7 @@ public class Income {
                 System.out.println("Sql Exception: " + ex.getMessage());
                 return "fail";
             }
-            
+
         }
     }
 
@@ -182,6 +181,27 @@ public class Income {
         } catch (Exception ex) {
             System.out.println("Exception in user income check : " + ex.getMessage());
             return -1;
+        }
+    }
+
+    public String deleteIncome(String id) {
+        int count = 0;
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String query = "DELETE from income where id = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, id);
+            count = pstmt.executeUpdate();
+            if (count > 0) {
+                return "success";
+            } else {
+
+                return "fail";
+            }
+
+        } catch (Exception ex) {
+
+            System.out.println("Exception in delete income details: " + ex.getMessage());
+            return "fail";
         }
     }
 
