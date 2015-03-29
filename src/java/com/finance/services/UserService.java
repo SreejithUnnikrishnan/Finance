@@ -5,10 +5,13 @@
  */
 package com.finance.services;
 
+import javax.ws.rs.Path;
+
 /**
  *
  * @author Sreejith
  */
+@Path("user")
 public class UserService {
     
     
