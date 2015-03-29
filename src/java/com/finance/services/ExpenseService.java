@@ -9,6 +9,7 @@ package com.finance.services;
 import com.finance.entity.Expense;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -46,5 +47,14 @@ public class ExpenseService {
         return result;
 
     }
+    
+    @DELETE
+    @Path("{id}")
+    public String deleteUserExpense(@PathParam("id") String id) {
+        String result = expense.deleteExpense(id);
+        return result;
+
+    }
+
     
 }

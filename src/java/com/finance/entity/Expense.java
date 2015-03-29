@@ -182,6 +182,28 @@ public class Expense {
             return -1;
         }
     }
+    
+    public String deleteExpense(String id) {
+        int count = 0;
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String query = "DELETE from expense where id = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, id);
+            count = pstmt.executeUpdate();
+            if (count > 0) {
+                return "success";
+            } else {
+
+                return "fail";
+            }
+
+        } catch (Exception ex) {
+
+            System.out.println("Exception in delete expense details: " + ex.getMessage());
+            return "fail";
+        }
+    }
+
 
 
     
