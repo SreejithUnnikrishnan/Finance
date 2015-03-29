@@ -5,10 +5,36 @@
  */
 package com.finance.services;
 
+
+import com.finance.entity.Expense;
+import javax.ejb.EJB;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+
 /**
  *
  * @author Sreejith
  */
+@Path("expense")
 public class ExpenseService {
+    @EJB
+    Expense expense;
+
+    @GET
+    @Path("{id}")
+    @Produces("application/json")
+    public String getUserExpense(@PathParam("id") String id) {
+        String result = expense.getExpenseDetails(id);
+        if (result.isEmpty() || result.equalsIgnoreCase("[]")) {
+            System.out.println("Emplty");
+            return null;
+        } else {
+            System.out.println(result);
+            return result;
+        }
+
+    }
     
 }
