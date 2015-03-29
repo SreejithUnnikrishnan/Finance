@@ -90,10 +90,13 @@ public class Income {
                         .add("amount", rs.getDouble("amount"));
                 jarray.add(obj);
             }
-
+            if (!connection.isClosed()) {
+                connection.close();
+            }
             return jarray.build().toString();
 
         } catch (Exception ex) {
+
             System.out.println("Exception thrown in Get user Income Details: " + ex.getMessage());
             return null;
         }
@@ -135,6 +138,9 @@ public class Income {
                 pstmt.setString(3, user_id);
                 pstmt.setString(4, amount);
                 changes = pstmt.executeUpdate();
+                if (!connection.isClosed()) {
+                    connection.close();
+                }
                 if (changes > 0) {
                     return "success";
                 } else {
@@ -144,6 +150,7 @@ public class Income {
                 System.out.println("Sql Exception: " + ex.getMessage());
                 return "fail";
             }
+
         } else {
             String query = "update income set budget = ?, start_date = now(), amount = ? where id = ?";
             try (Connection connection = DatabaseConnection.getConnection()) {
@@ -152,6 +159,9 @@ public class Income {
                 pstmt.setString(2, amount);
                 pstmt.setInt(3, count);
                 changes = pstmt.executeUpdate();
+                if (!connection.isClosed()) {
+                    connection.close();
+                }
                 if (changes > 0) {
                     return "success";
                 } else {
@@ -172,11 +182,13 @@ public class Income {
             pstmt.setString(1, category);
             pstmt.setString(2, user_id);
             ResultSet rs = pstmt.executeQuery();
+            
             if (rs.next()) {
                 return rs.getInt("id");
             } else {
                 return -1;
             }
+            
 
         } catch (Exception ex) {
             System.out.println("Exception in user income check : " + ex.getMessage());
@@ -191,6 +203,9 @@ public class Income {
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, id);
             count = pstmt.executeUpdate();
+            if (!connection.isClosed()) {
+                connection.close();
+            }
             if (count > 0) {
                 return "success";
             } else {

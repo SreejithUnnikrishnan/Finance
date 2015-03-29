@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.finance.entity;
 
 import com.finance.database.DatabaseConnection;
@@ -26,6 +25,7 @@ import javax.json.stream.JsonParser;
  */
 @Stateless
 public class Expense {
+
     private int id;
     private String name;
     private String start_date;
@@ -89,6 +89,9 @@ public class Expense {
                         .add("amount", rs.getDouble("amount"));
                 jarray.add(obj);
             }
+            if (!connection.isClosed()) {
+                connection.close();
+            }
 
             return jarray.build().toString();
 
@@ -97,7 +100,7 @@ public class Expense {
             return null;
         }
     }
-    
+
     public String insertExpense(String details) {
         JsonParser parser = Json.createParser(new StringReader(details));
         Map<String, String> map = new HashMap<>();
@@ -134,6 +137,9 @@ public class Expense {
                 pstmt.setString(3, user_id);
                 pstmt.setString(4, amount);
                 changes = pstmt.executeUpdate();
+                if (!connection.isClosed()) {
+                    connection.close();
+                }
                 if (changes > 0) {
                     return "success";
                 } else {
@@ -151,6 +157,9 @@ public class Expense {
                 pstmt.setString(2, amount);
                 pstmt.setInt(3, count);
                 changes = pstmt.executeUpdate();
+                if (!connection.isClosed()) {
+                    connection.close();
+                }
                 if (changes > 0) {
                     return "success";
                 } else {
@@ -171,6 +180,7 @@ public class Expense {
             pstmt.setString(1, category);
             pstmt.setString(2, user_id);
             ResultSet rs = pstmt.executeQuery();
+            
             if (rs.next()) {
                 return rs.getInt("id");
             } else {
@@ -182,7 +192,7 @@ public class Expense {
             return -1;
         }
     }
-    
+
     public String deleteExpense(String id) {
         int count = 0;
         try (Connection connection = DatabaseConnection.getConnection()) {
@@ -190,6 +200,9 @@ public class Expense {
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, id);
             count = pstmt.executeUpdate();
+            if (!connection.isClosed()) {
+                connection.close();
+            }
             if (count > 0) {
                 return "success";
             } else {
@@ -204,9 +217,4 @@ public class Expense {
         }
     }
 
-
-
-    
-    
-    
 }
