@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(com.finance.services.CategoryService.class);
         resources.add(com.finance.services.ExpenseService.class);
         resources.add(com.finance.services.IncomeService.class);
         resources.add(com.finance.services.ReportService.class);
