@@ -33,6 +33,7 @@ create table income(
 ALTER TABLE income AUTO_INCREMENT = 1;	
 alter table income add CONSTRAINT user_id_income_fk FOREIGN KEY (user_id) REFERENCES users(id);
 alter table income add amount DECIMAL(5,2) NOT NULL;
+alter table income modify column amount decimal(7,2) not null;
 	
 create table expense(
 	id INTEGER(4) AUTO_INCREMENT,
@@ -45,6 +46,7 @@ create table expense(
 ALTER TABLE expense AUTO_INCREMENT = 1;	
 alter table expense add CONSTRAINT user_id_expense_fk FOREIGN KEY (user_id) REFERENCES users(id);
 alter table expense add amount DECIMAL(5,2) NOT NULL;
+alter table expense modify column amount decimal(7,2) not null;
 
 /*
 create table income_details(

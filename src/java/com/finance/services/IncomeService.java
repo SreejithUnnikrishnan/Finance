@@ -29,14 +29,15 @@ public class IncomeService {
     @Path("{id}")
     @Produces("application/json")
     public String getUserIncome(@PathParam("id") String id) {
+        System.out.println("Inside get in income service");
         String result = income.getIncomeDetails(id);
-        if (result.isEmpty() || result.equalsIgnoreCase("[]")) {
-            System.out.println("Emplty");
-            return null;
-        } else {
-            System.out.println(result);
+//        if (result.isEmpty() || result.equalsIgnoreCase("[]")) {
+//            System.out.println("Emplty");
+//            return null;
+//        } else {
+//            System.out.println(result);
             return result;
-        }
+      //  }
 
     }
 
