@@ -30,13 +30,13 @@ public class ExpenseService {
     @Produces("application/json")
     public String getUserExpense(@PathParam("id") String id) {
         String result = expense.getExpenseDetails(id);
-        if (result.isEmpty() || result.equalsIgnoreCase("[]")) {
-            System.out.println("Emplty");
-            return null;
-        } else {
-            System.out.println(result);
+//        if (result.isEmpty() || result.equalsIgnoreCase("[]")) {
+//            System.out.println("Emplty");
+//            return null;
+//        } else {
+//            System.out.println(result);
             return result;
-        }
+       // }
 
     }
     
