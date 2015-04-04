@@ -7,6 +7,9 @@
 $(document).ready(function () {
     var id = sessionStorage.getItem("id");
     var name = sessionStorage.getItem("name");
+    if(id === null){
+        window.location.href = "../index.html";
+    }
     console.log("Name: "+name);
     $("#name").text(name);
     
