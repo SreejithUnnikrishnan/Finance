@@ -6,11 +6,41 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Finance: Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/login.css" rel="stylesheet" type="text/css">
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="js/login.js"></script> 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     </head>
     <body>
-        <div>TODO write content</div>
+        <section>
+            <div id="container-fluid">
+
+                <div id="errorMsg"></div>
+                <form id="loginForm" name="loginForm" action="loginCheck()" method="get">
+                    <label for="user">User Id:</label>
+                    <input name="user" id="user" type="text" required/><span id="user_error">*</span><br></br>
+                    <label for="pwd">Password:</label>
+                    <input name="pwd" id="pwd" type="password" required/><span id="pwd_error">*</span></br>
+                    <div id="forBtn">
+                        <input type="submit" id="login_submit" value="Login"><br>
+                        <input type="reset" id="clear_entries" value="Clear">
+                        <a href="other/userReg.html">New User</a>
+                    </div>
+                </form>  
+            </div>
+
+        </section>		
+
     </body>
 </html>
