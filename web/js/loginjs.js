@@ -10,7 +10,9 @@ $(document).ready(function () {
 
         var user = $('#user').val();
         var pwd = $('#pwd').val();
-        
+        if( user =='' || pwd ==''){
+            $("#errorMsg").text("User id and Password needed!!!");
+        }
         console.log(user + ' ' + pwd);
         var url = './webresources/user/' + user + '/' + pwd;
         console.log(url);
@@ -18,6 +20,7 @@ $(document).ready(function () {
             console.log('data:'+jQuery.isEmptyObject(data));
             if (!jQuery.isEmptyObject(data)) {
                 console.log('id: ' + data.id + ' name: ' + data.name);
+                window.location.href = "other/welcome.html";
             }
             else{
                 $("#errorMsg").text("Error in login");
