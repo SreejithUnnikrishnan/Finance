@@ -30,10 +30,12 @@ public class UserService {
     public String getUser(@PathParam("id") String id, @PathParam("pwd") String password) {
         System.out.println("Inside get: " + id + " " + password);
         String userDetails = user.checkUser(id, password);
-        System.out.println("hello" + userDetails);
-        if(userDetails.isEmpty()){
+       
+        if(userDetails.equals("")){
+             System.out.println("hello:" + userDetails);
             userDetails = "[]";
         }
+        System.out.println("before:" + userDetails);
         return userDetails;
     }
 

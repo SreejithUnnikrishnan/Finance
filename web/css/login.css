@@ -40,5 +40,9 @@ span {
 #forBtn {
     padding-left: 10em;
 }
+p #errorMsg {
+    color: red;
+    font-size: 50em;
+}
 
 
