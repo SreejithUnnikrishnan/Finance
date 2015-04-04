@@ -10,8 +10,10 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/login.css" rel="stylesheet" type="text/css">
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+   	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
-        <script src="js/login.js"></script> 
+        <script src="js/loginjs.js"></script> 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
@@ -27,13 +29,13 @@ and open the template in the editor.
             <div id="container-fluid">
 
                 <div id="errorMsg"></div>
-                <form id="loginForm" name="loginForm" action="loginCheck()" method="get">
+                <form id="loginForm" name="loginForm" action="welcome.html" method="get">
                     <label for="user">User Id:</label>
                     <input name="user" id="user" type="text" required/><span id="user_error">*</span><br></br>
                     <label for="pwd">Password:</label>
                     <input name="pwd" id="pwd" type="password" required/><span id="pwd_error">*</span></br>
                     <div id="forBtn">
-                        <input type="submit" id="login_submit" value="Login"><br>
+                        <input type="button" id="login_submit" value="Login"><br>
                         <input type="reset" id="clear_entries" value="Clear">
                         <a href="other/userReg.html">New User</a>
                     </div>

@@ -25,23 +25,23 @@ public class UserService {
     User user;
 
     @GET
-    @Path("{id}")
+    @Path("{id}/{pwd}")
     @Produces("application/json")
-    public String getUser(@PathParam("id") String id, String password) {
+    public String getUser(@PathParam("id") String id, @PathParam("pwd") String password) {
+        System.out.println("Inside get: " + id + " " + password);
         String userDetails = user.checkUser(id, password);
-        if (userDetails.isEmpty()) {
-            return "false";
-        } else {
-            return userDetails;
+        System.out.println("hello" + userDetails);
+        if(userDetails.isEmpty()){
+            userDetails = "[]";
         }
+        return userDetails;
     }
-    
+
     @POST
     @Consumes("application/json")
-    public String insertUser(String userDetails){
+    public String insertUser(String userDetails) {
         String result = user.addUser(userDetails);
         return null;
     }
-    
 
 }

@@ -86,18 +86,16 @@ public class User {
             while (rs.next()) {
                 JsonObjectBuilder obj = Json.createObjectBuilder()
                         .add("id", rs.getInt("id"))
-                        .add("name", rs.getString("name"))
-                        .add("address", rs.getString("address"))
-                        .add("phone", rs.getString("phone"))
-                        .add("searchType", rs.getString("search_type"));
-                result = obj.toString();
+                        .add("name", rs.getString("name"));
+                result = obj.build().toString();
             }
-            return result;            
+            
+                        
         } catch (SQLException ex) {
             System.out.println("Exception raised in checkUser: " + ex.getMessage());
-            return null;
+            
         }
-        
+        return result;
     }
 
     public String addUser(String userDetails) {
