@@ -7,12 +7,22 @@
 $(document).ready(function () {
     var id = sessionStorage.getItem("id");
     var name = sessionStorage.getItem("name");
-    if(id === null){
+    if (id === null) {
         window.location.href = "../index.html";
     }
-    console.log("Name: "+name);
-    $("#name").text(name);
-    
+    else {
+        console.log("Name: " + name);
+        $("#name").text(name);
+        $("#income").click(function(){
+             window.location.href = "./income.html";
+        });
+        $("#expense").click(function(){
+             window.location.href = "./expense.html";
+        });
+        $("#report").click(function(){
+             window.location.href = "./report.html";
+        });
+    }
 });
 
 
