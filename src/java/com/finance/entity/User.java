@@ -140,7 +140,7 @@ public class User {
             
         } catch (SQLException ex) {
             System.out.println("Sql Exception: " + ex.getMessage());
-            return null;
+            return "0";
         }
         
     }
