@@ -18,21 +18,18 @@ import javax.ws.rs.Produces;
  */
 @Path("report")
 public class ReportService {
+
     @EJB
     Report report;
-    
+
     @GET
     @Path("{id}")
     @Produces("application/json")
-    public String getUserReport(@PathParam("id") String id){
+    public String getUserReport(@PathParam("id") String id) {
         String result = report.generateReport(id);
-        if (result.isEmpty() || result.equalsIgnoreCase("[]")) {
-            System.out.println("Emplty");
-            return null;
-        } else {
-            System.out.println(result);
-            return result;
-        }
+
+        return result;
+
     }
-    
+
 }

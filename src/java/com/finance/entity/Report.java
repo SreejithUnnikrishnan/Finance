@@ -57,12 +57,12 @@ public class Report {
             if (!connect.isClosed()) {
                 connect.close();
             }
-            return jarray.build().toString();
+
         } catch (Exception ex) {
             System.out.println("Exception in user income check : " + ex.getMessage());
-            return null;
-        }
 
+        }
+        return jarray.build().toString();
     }
 
 }
