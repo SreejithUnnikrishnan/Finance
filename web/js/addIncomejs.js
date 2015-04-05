@@ -4,7 +4,20 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-    
+    var catUrl = '../webresources/category/Income';
+    $.getJSON(catUrl, function (data) {
+        var items = [];
+        $.each(data, function (key, val) {
+            items.push("<li id='" + key + "'>" + val + "</li>");
+        });
+
+        $("<ul/>", {
+            "class": "my-new-list",
+            html: items.join("")
+        }).appendTo("body");
+    });
+
+
 
     $('#add').click(function () {
 
@@ -18,7 +31,7 @@ $(document).ready(function () {
             $('#errorMsg').text("Amount should be Numeric value!!!");
         }
         else {
-            
+
             var id = sessionStorage.getItem("id");
             var arr = {name: $('#name').val(), budget: $('#budget').val(), start_date: $('#datepicker').val(), amount: $('#amount').val(), user_id: id};
             $.ajax({

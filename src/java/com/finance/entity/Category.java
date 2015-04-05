@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
 
 /**
  *
@@ -51,25 +54,28 @@ public class Category {
     }
     
     public String getCategory(String type){
-        ArrayList<String> array = new ArrayList<String>();
+         JsonArrayBuilder jarray = Json.createArrayBuilder();
         try(Connection connection = DatabaseConnection.getConnection()){
-            String query = "select name from categories where cat_type = ?";
+            String query = "select id,name from categories where cat_type = ?";
             PreparedStatement ptst = connection.prepareStatement(query);
             ptst.setString(1, type);
             ResultSet rs = ptst.executeQuery();
             while(rs.next()){
-                array.add(rs.getString("name"));
+                JsonObjectBuilder obj = Json.createObjectBuilder()
+                        .add("id", rs.getInt("id"))
+                        .add("name", rs.getString("name"));
+                jarray.add(obj);
             }
             if(!connection.isClosed()){
                 connection.close();
             }
-            return array.toString();
+            
             
         } catch (SQLException ex) {
             System.out.println("Exception in getting categories: " +ex.getMessage());
-            return null;
+            
         }
-        
+        return jarray.build().toString();
     }
     
     
