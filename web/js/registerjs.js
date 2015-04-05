@@ -45,7 +45,7 @@ $(document).ready(function () {
                         $('#errorMsg').text("Sorry!!! something went wrong. Try again later!");
                     }
                     else {
-                        console.log("inside else");
+                        //console.log("inside else");
                         sessionStorage.setItem("id", data);
                         sessionStorage.setItem("name", $('#name').val());
                         alert("Please make note of User Id: " + data);

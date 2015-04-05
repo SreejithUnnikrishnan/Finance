@@ -11,7 +11,7 @@ $(document).ready(function () {
         window.location.href = "../index.html";
     }
     else {
-        console.log("Name: " + name);
+       // console.log("Name: " + name);
         $("#name").text(name);
         $("#income").click(function(){
              window.location.href = "./income.html";

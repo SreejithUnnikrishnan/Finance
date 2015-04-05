@@ -17,20 +17,20 @@ $(document).ready(function () {
             $("#errorMsg").text("User id should be numeric");
         }
         else {
-            console.log(user + ' ' + pwd);
+           
             var url = './webresources/user/' + user + '/' + pwd;
             console.log(url);
             $.getJSON(url, function (data) {
-                console.log('data:' + jQuery.isEmptyObject(data));
+                
                 if (!jQuery.isEmptyObject(data)) {
-                    console.log('id: ' + data.id + ' name: ' + data.name);
+                    
                     sessionStorage.setItem("id",data.id);
                     sessionStorage.setItem("name",data.name);
                     window.location.href = "other/welcome.html";
                 }
                 else {
                     $("#errorMsg").text("Error in login");
-                    console.log('Error in login');
+                    
                 }
             });
         }

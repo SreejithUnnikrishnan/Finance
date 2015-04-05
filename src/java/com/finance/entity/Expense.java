@@ -141,16 +141,16 @@ public class Expense {
                     connection.close();
                 }
                 if (changes > 0) {
-                    return "success";
+                    return "1";
                 } else {
-                    return "fail";
+                    return "0";
                 }
             } catch (SQLException ex) {
                 System.out.println("Sql Exception in Expense insert: " + ex.getMessage());
-                return "fail";
+                return "0";
             }
         } else {
-            String query = "update expense set budget = ?, start_date = now(), amount = ? where id = ?";
+            String query = "update expense set budget = ?, start_date = now(), amount = amount + ? where id = ?";
             try (Connection connection = DatabaseConnection.getConnection()) {
                 PreparedStatement pstmt = connection.prepareStatement(query);
                 pstmt.setString(1, budget);
@@ -161,13 +161,13 @@ public class Expense {
                     connection.close();
                 }
                 if (changes > 0) {
-                    return "success";
+                    return "1";
                 } else {
-                    return "fail";
+                    return "0";
                 }
             } catch (SQLException ex) {
                 System.out.println("Sql Exception in expense update: " + ex.getMessage());
-                return "fail";
+                return "0";
             }
 
         }

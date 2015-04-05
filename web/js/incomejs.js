@@ -10,10 +10,10 @@ $(document).ready(function () {
         window.location.href = "../index.html";
     }
      else {
-        console.log("Name: " + name);
+        
         $("#name").text(name);
         var url = '../webresources/income/' + id;
-            console.log(url);
+            
             $.getJSON(url, function (data) {
                 if(data.length > 0){
                     var outHtml = "";

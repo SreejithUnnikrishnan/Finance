@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-    var catUrl = '../webresources/category/Income';
+    var catUrl = '../webresources/category/Expense';
     $.getJSON(catUrl, function (data) {
 
         if (data.length > 0) {
@@ -37,20 +37,20 @@ $(document).ready(function () {
             var id = sessionStorage.getItem("id");
             var arr = {name: $('#categoryOption').val(), budget: $('#budget').val(), start_date: $('#datepicker').val(), amount: $('#amount').val(), user_id: id};
             $.ajax({
-                url: '../webresources/income/',
+                url: '../webresources/expense/',
                 type: 'POST',
                 data: JSON.stringify(arr),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                   
+                    
                     if (data === "0") {
 
                         $('#errorMsg').text("Sorry!!! something went wrong. Try again later!");
                     }
                     else {
 
-                        window.location.href = "./income.html";
+                        window.location.href = "./expense.html";
                     }
                 }
             });
