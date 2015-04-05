@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.finance.entity;
 
 import com.finance.database.DatabaseConnection;
@@ -13,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -28,6 +28,7 @@ import javax.json.stream.JsonParser;
  */
 @Stateful
 public class User {
+
     private String name;
     private String password;
     private String security_question;
@@ -41,7 +42,6 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-    
 
     public String getName() {
         return name;
@@ -74,8 +74,8 @@ public class User {
     public void setSecurity_answer(String security_answer) {
         this.security_answer = security_answer;
     }
-    
-    public String checkUser(String id, String password){
+
+    public String checkUser(String id, String password) {
         String result = "";
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "SELECT * FROM users WHERE id = ? and password = ?";
@@ -89,11 +89,10 @@ public class User {
                         .add("name", rs.getString("name"));
                 result = obj.build().toString();
             }
-            
-                        
+
         } catch (SQLException ex) {
             System.out.println("Exception raised in checkUser: " + ex.getMessage());
-            
+
         }
         return result;
     }
@@ -125,26 +124,27 @@ public class User {
         String security_answer = map.get("answer");
         String query = "INSERT INTO users (name, password, security_question, security_answer) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection()) {
-            PreparedStatement pstmt = connection.prepareStatement(query);
+            PreparedStatement pstmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, user);
             pstmt.setString(2, password);
             pstmt.setString(3, security_question);
             pstmt.setString(4, security_answer);
             changes = pstmt.executeUpdate();
-            if(changes > 0){
-                return "1";
-            }
-            else{
+            ResultSet userRS = pstmt.getGeneratedKeys();
+            userRS.next();
+            int newId = userRS.getInt(1);
+            if (changes > 0) {
+
+                return Integer.toString(newId);
+            } else {
                 return "0";
             }
-            
+
         } catch (SQLException ex) {
             System.out.println("Sql Exception: " + ex.getMessage());
             return "0";
         }
-        
+
     }
-    
-    
-    
+
 }

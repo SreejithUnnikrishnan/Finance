@@ -29,11 +29,11 @@ public class UserService {
     @Produces("application/json")
     public String getUser(@PathParam("id") String id, @PathParam("pwd") String password) {
         System.out.println("Inside get: " + id + " " + password);
-        
+
         String userDetails = user.checkUser(id, password);
-       
-        if(userDetails.equals("")){
-             System.out.println("hello:" + userDetails);
+
+        if (userDetails.equals("")) {
+            System.out.println("hello:" + userDetails);
             userDetails = "[]";
         }
         System.out.println("before:" + userDetails);
@@ -44,6 +44,7 @@ public class UserService {
     @Consumes("application/json")
     public String insertUser(String userDetails) {
         String result = user.addUser(userDetails);
+
         return result;
     }
 

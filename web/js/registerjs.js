@@ -39,9 +39,18 @@ $(document).ready(function () {
                 data: JSON.stringify(arr),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
-                async: false,
                 success: function (data) {
-                    alert(data);
+                    if (data === "0") {
+                        console.log("inside if");
+                        $('#errorMsg').text("Sorry!!! something went wrong. Try again later!");
+                    }
+                    else {
+                        console.log("inside else");
+                        sessionStorage.setItem("id", data);
+                        sessionStorage.setItem("name", $('#name').val());
+                        alert("Please make note of User Id: " + data);
+                        window.location.href = "./welcome.html";
+                    }
                 }
             });
         }
