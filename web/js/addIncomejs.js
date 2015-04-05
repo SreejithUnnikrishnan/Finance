@@ -29,7 +29,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (data) {
                     alert("inside");
-                    if (data === "fail") {
+                    if (data === "0") {
                         console.log("inside if");
                         $('#errorMsg').text("Sorry!!! something went wrong. Try again later!");
                     }

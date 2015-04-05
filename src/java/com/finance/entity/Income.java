@@ -142,13 +142,13 @@ public class Income {
                     connection.close();
                 }
                 if (changes > 0) {
-                    return "success";
+                    return "1";
                 } else {
-                    return "fail";
+                    return "0";
                 }
             } catch (SQLException ex) {
                 System.out.println("Sql Exception: " + ex.getMessage());
-                return "fail";
+                return "0";
             }
 
         } else {
@@ -163,13 +163,13 @@ public class Income {
                     connection.close();
                 }
                 if (changes > 0) {
-                    return "success";
+                    return "1";
                 } else {
-                    return "fail";
+                    return "0";
                 }
             } catch (SQLException ex) {
                 System.out.println("Sql Exception: " + ex.getMessage());
-                return "fail";
+                return "0";
             }
 
         }
