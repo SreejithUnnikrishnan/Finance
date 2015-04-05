@@ -6,11 +6,56 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Finance: Add Income</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/login.css" rel="stylesheet" type="text/css">
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="../js/registerjs.js"></script> 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker();
+            });
+        </script>
+
     </head>
     <body>
-        <div>add income</div>
+        <section>
+            <h1>Add Income Details</h1>
+            <p id="errorMsg"></p>
+            <form id="addIncome" name="addIncome" action="income.html" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+                <span id="name_error">*</span><br>
+
+                <label for="budget">Budget:</label>
+                <input type="text" id="budget">
+                <span id="budget_error">*</span><br>
+
+                <label for="datepicker">Date:</label>
+                <input type="text" id="datepicker"><br>
+
+                <label for="amount">Amount:</label>
+                <input type="text" id="amount"><br>
+
+
+                <label>&nbsp;</label>
+                <input type="button" id="add" value="Add Income"><br>
+
+                <label>&nbsp;</label>
+                <input type="reset" id="clear" value="Clear">
+            </form>
+        </section>
     </body>
+
 </html>
