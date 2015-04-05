@@ -152,7 +152,7 @@ public class Income {
             }
 
         } else {
-            String query = "update income set budget = ?, start_date = now(), amount = ? where id = ?";
+            String query = "update income set budget = ?, start_date = now(), amount = amount + ? where id = ?";
             try (Connection connection = DatabaseConnection.getConnection()) {
                 PreparedStatement pstmt = connection.prepareStatement(query);
                 pstmt.setString(1, budget);

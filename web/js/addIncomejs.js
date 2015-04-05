@@ -6,21 +6,22 @@
 $(document).ready(function () {
     var catUrl = '../webresources/category/Income';
     $.getJSON(catUrl, function (data) {
-        alert(data);
+
         if (data.length > 0) {
             var output = "<select id=\"categoryOption\">";
 
             for (var i = 0; i < data.length; i++)
                 output += "<option value=" + data[i].name + ">" + data[i].name + "</option>";
         }
-         output += "</select>";
-         $('#name').html(output);
+        output += "</select>";
+        $('#name').html(output);
 
     });
 
 
 
     $('#add').click(function () {
+
 
         if ($('#budget').val() === "" || $('#datepicker').val() === "" || $('#amount').val() === "") {
             $('#errorMsg').text("Fields Marked * is required!!!");
@@ -34,7 +35,7 @@ $(document).ready(function () {
         else {
 
             var id = sessionStorage.getItem("id");
-            var arr = {name: $('#name').val(), budget: $('#budget').val(), start_date: $('#datepicker').val(), amount: $('#amount').val(), user_id: id};
+            var arr = {name: $('#categoryOption').val(), budget: $('#budget').val(), start_date: $('#datepicker').val(), amount: $('#amount').val(), user_id: id};
             $.ajax({
                 url: '../webresources/income/',
                 type: 'POST',
@@ -44,11 +45,11 @@ $(document).ready(function () {
                 success: function (data) {
                     alert("inside");
                     if (data === "0") {
-                        console.log("inside if");
+
                         $('#errorMsg').text("Sorry!!! something went wrong. Try again later!");
                     }
                     else {
-                        console.log("inside else");
+
                         window.location.href = "./income.html";
                     }
                 }
