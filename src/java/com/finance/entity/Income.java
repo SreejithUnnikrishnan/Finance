@@ -220,4 +220,28 @@ public class Income {
         }
     }
 
+    public double getBudgetAmount(String id, String name) {
+        double amt = 0.00;
+         try (Connection connection = DatabaseConnection.getConnection()) {
+            String query = "SELECT budget FROM income WHERE user_id = ? and start_date >= DATE_FORMAT(NOW() ,'%Y-%m-01') AND start_date <= LAST_DAY(now()) and name = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, id);
+            pstmt.setString(1, name);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                amt = rs.getDouble("budget");
+            }
+            if (!connection.isClosed()) {
+                connection.close();
+            }
+            
+
+        } catch (Exception ex) {
+
+            System.out.println("Exception thrown in Get user Income Details: " + ex.getMessage());
+           
+        }
+         return amt;
+    }
+
 }

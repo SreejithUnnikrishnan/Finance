@@ -40,6 +40,13 @@ public class IncomeService {
       //  }
 
     }
+    
+    @GET
+    @Path("{id}/{name}")
+    public double getBudget(@PathParam("id") String id,@PathParam("name") String name){
+        double bud = income.getBudgetAmount(id,name);        
+        return bud;
+    }
 
     @POST
     @Consumes("application/json")
