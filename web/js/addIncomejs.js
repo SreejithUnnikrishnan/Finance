@@ -6,22 +6,23 @@
 $(document).ready(function () {
     var catUrl = '../webresources/category/Income';
     $.getJSON(catUrl, function (data) {
-        var items = [];
-        $.each(data, function (key, val) {
-            items.push("<li id='" + key + "'>" + val + "</li>");
-        });
+        alert(data);
+        if (data.length > 0) {
+            var output = "<select id=\"categoryOption\">";
 
-        $("<ul/>", {
-            "class": "my-new-list",
-            html: items.join("")
-        }).appendTo("body");
+            for (var i = 0; i < data.length; i++)
+                output += "<option value=" + data[i].name + ">" + data[i].name + "</option>";
+        }
+         output += "</select>";
+         $('#name').html(output);
+
     });
 
 
 
     $('#add').click(function () {
 
-        if ($('#name').val() === "" || $('#budget').val() === "" || $('#datepicker').val() === "" || $('#amount').val() === "") {
+        if ($('#budget').val() === "" || $('#datepicker').val() === "" || $('#amount').val() === "") {
             $('#errorMsg').text("Fields Marked * is required!!!");
         }
         else if (!(jQuery.isNumeric($('#budget').val()))) {

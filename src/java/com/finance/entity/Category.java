@@ -56,13 +56,13 @@ public class Category {
     public String getCategory(String type){
          JsonArrayBuilder jarray = Json.createArrayBuilder();
         try(Connection connection = DatabaseConnection.getConnection()){
-            String query = "select id,name from categories where cat_type = ?";
+            String query = "select category_id,name from categories where cat_type = ?";
             PreparedStatement ptst = connection.prepareStatement(query);
             ptst.setString(1, type);
             ResultSet rs = ptst.executeQuery();
             while(rs.next()){
                 JsonObjectBuilder obj = Json.createObjectBuilder()
-                        .add("id", rs.getInt("id"))
+                        .add("id", rs.getInt("category_id"))
                         .add("name", rs.getString("name"));
                 jarray.add(obj);
             }
