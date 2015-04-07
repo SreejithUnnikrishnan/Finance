@@ -22,7 +22,7 @@ $(document).ready(function () {
                                     + "<td>" + data[i].budget + "</td>"
                                     +  "<td>"+data[i].amount+"</td></div></tr>";
                         }
-						outHtml += "</tbody></table>";
+                outHtml += "</tbody></table>";
                        $('#income_data').html(outHtml);     
                 }
                 else{
