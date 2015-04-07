@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Finance: Add Income</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/login.css" rel="stylesheet" type="text/css">
+
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -39,34 +39,44 @@ and open the template in the editor.
 
     </head>
     <body>
-        <section>
-            <h1>Add Income Details</h1>
-            <p id="errorMsg"></p>
-            <form id="addIncome" name="addExpense" action="expense.html" method="post">
-                <label for="name">Name:</label>
-                <div id="name"></div>
+        <div class="container">
+            <section>
+                <h1 class="form-signin-heading">Add Income Details</h1>
 
-                <label for="budget">Budget:</label>
-                <input type="text" id="budget">
-                <span id="budget_error">*</span><br>
+                <p id="errorMsg"></p>
+                <form id="addIncome" name="addExpense" action="expense.html" method="post">
+                    <div class="col-lg-6">
+                        <label for="name">Name:</label>
+                        <div class="input-group">
+                            <div id="name"></div>
+                        </div><br>
+                        <label for="budget">Budget:</label>
+                        <div class="input-group">
+                            <input type="text" id="budget">
+                            <span id="budget_error">*</span><br>
+                        </div><br>
+                        <label for="datepicker">Date:</label>
+                        <div class="input-group">
+                            <input type="text" id="datepicker">
+                            <span id="datepicker_error">*</span><br>
+                        </div><br>
+                        <label for="amount">Amount:</label>
+                        <div class="input-group">
+                            <input type="text" id="amount">
+                            <span id="amount_error">*</span><br>
+                        </div><br>
 
-                <label for="datepicker">Date:</label>
-                <input type="text" id="datepicker">
-                <span id="datepicker_error">*</span><br>
+                        <label>&nbsp;</label>
+                        <input type="button" id="add" value="Add Expense" class="btn btn-default navbar-btn" />
 
-                <label for="amount">Amount:</label>
-                <input type="text" id="amount">
-                <span id="amount_error">*</span><br>
+                        <label>&nbsp;</label>
+                        <input type="reset" id="clear" value="Clear" class="btn btn-default navbar-btn" />
+                        <br> <a href="expense.html">Back</a>
+                    </div>
+                </form>
 
-
-                <label>&nbsp;</label>
-                <input type="button" id="add" value="Add Expense"><br>
-
-                <label>&nbsp;</label>
-                <input type="reset" id="clear" value="Clear">
-            </form>
-            <a href="expense.html">Back</a>
-        </section>
+            </section>
+        </div>
     </body>
 
 </html>

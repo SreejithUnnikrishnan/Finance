@@ -8,7 +8,7 @@ $(document).ready(function () {
     $.getJSON(catUrl, function (data) {
 
         if (data.length > 0) {
-            var output = "<select id=\"categoryOption\">";
+            var output = "<select id=\"categoryOption\" class=\"input-group\">";
 
             for (var i = 0; i < data.length; i++)
                 output += "<option value=" + data[i].name + ">" + data[i].name + "</option>";
