@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/login.css" rel="stylesheet" type="text/css">
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-   	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="../js/welcomejs.js"></script> 
         <!-- Latest compiled and minified CSS -->
@@ -25,9 +25,36 @@ and open the template in the editor.
 
     </head>
     <body>
-        <h2 id="name"></h2>
-        <input type="button" id="income" value="Income" />
-        <input type="button" id="expense" value="Expense" />
-        <input type="button" id="report" value="Report" />
+
+        <div class="container">
+            <div class="page-header">
+                <h1 id="name"></h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="img-circle" src="../img/income.jpg" alt="income image" width="140" height="140">
+                    <h2>Income</h2>
+                    <p>Click Income to view the Income details for this month</p>
+                    <p><input type="button" id="income" value="Income" class="btn btn-default"/></p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-circle" src="../img/expense.jpg" alt="Expense image" width="140" height="140">
+                    <h2>Expense</h2>
+                    <p>Click Expense to view the Expense details for this month</p>
+                    <p><input type="button" id="expense" value="Expense" class="btn btn-default" /></p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-circle" src="../img/report.jpg" alt="Report image" width="140" height="140">
+                    <h2>Report</h2>
+                    <p>Click Report to view the Report details for this month</p>          
+                    <p><input type="button" id="report" value="Report" class="btn btn-default" /></p>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
     </body>
 </html>

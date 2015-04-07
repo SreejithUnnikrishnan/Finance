@@ -9,9 +9,9 @@ and open the template in the editor.
         <title>Finance: Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/login.css" rel="stylesheet" type="text/css">
+        <!--<link href="css/login.css" rel="stylesheet" type="text/css"> -->
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-   	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="js/loginjs.js"></script> 
         <!-- Latest compiled and minified CSS -->
@@ -26,23 +26,25 @@ and open the template in the editor.
     </head>
     <body>
         <section>
-            <div id="container-fluid">
-
+            <div class="container">
                 <p id="errorMsg"></p>
-                <form id="loginForm" name="loginForm" action="other/welcome.html" method="get">
-                    <label for="user">User Id:</label>
-                    <input name="user" id="user" type="text" required/><span id="user_error">*</span><br></br>
-                    <label for="pwd">Password:</label>
-                    <input name="pwd" id="pwd" type="password" required/><span id="pwd_error">*</span></br>
+                <form id="loginForm" name="loginForm" action="other/welcome.html" method="get" class="form-signin">
+                    <h2 class="form-signin-heading">Login</h2>
+
+                    <label for="user" class="sr-only">User Id:</label>
+                    <input name="user" id="user" type="text" class="form-control" placeholder="User Id" required/><span id="user_error">*</span><br></br>
+                    <label for="pwd" class="sr-only">Password:</label>
+                    <input name="pwd" id="pwd" type="password" class="form-control" placeholder="Password" required/><span id="pwd_error">*</span></br>
                     <div id="forBtn">
-                        <input type="button" id="login_submit" value="Login"><br>
-                        <input type="reset" id="clear_entries" value="Clear">
+                        <input type="button" id="login_submit" value="Login" class="btn btn-lg btn-primary btn-block"><br>
+                        <input type="reset" id="clear_entries" value="Clear" class="btn btn-lg btn-primary btn-block">
                         <a href="other/userReg.html">New User</a>
                     </div>
                 </form>  
-            </div>
 
-        </section>		
+            </div>
+        </section> 
+
 
     </body>
 </html>
