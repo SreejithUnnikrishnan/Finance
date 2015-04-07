@@ -6,10 +6,10 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Finance: Login</title>
+        <title>Finance: Register</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/login.css" rel="stylesheet" type="text/css">
+        <!-- <link href="css/login.css" rel="stylesheet" type="text/css"> -->
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -25,33 +25,43 @@ and open the template in the editor.
 
     </head>
     <body>
-        <section>
-            <h1>User Registration</h1>
-            <p id="errorMsg"></p>
-            <form id="userReg" name="userReg" action="welcome.html" method="get">
-                <label for="name">Name:</label>
-                <input type="text" id="name">
-                <span id="name_error">*</span><br>
+        <div class="container">
+            <section>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password">
-                <span id="password_error">*</span><br>
+                <h1 class="form-signin-heading">User Registration</h1>
+                <p id="errorMsg"></p>
+                <form id="userReg" name="userReg" class="form-signin" action="welcome.html" method="get">
+                    <div class="col-lg-6">
+                        <label for="name">Name:</label>
+                        <div class="input-group">
+                            <input type="text" id="name"  aria-describedby="basic-addon1">
+                            <span id="name_error">*</span><br>
+                        </div><br>
+                        <label for="password">Password:</label>
+                        <div class="input-group">
+                            <input type="password" id="password" aria-describedby="basic-addon1">
+                            <span id="password_error">*</span><br>
+                        </div><br>
+                        <label for="question">Security Question</label>
+                        <div class="input-group">
+                            <input type="text" id="question" aria-describedby="basic-addon1"><br>
+                        </div><br>
+                        <label for="answer">Security Answer</label>
+                        <div class="input-group">
+                            <input type="text" id="answer" aria-describedby="basic-addon1"><br>
+                        </div><br>
 
-                <label for="question">Security Question</label>
-                <input type="text" id="question"><br>
+                        <label>&nbsp;</label>
+                        <input type="button" id="register" value="Register" class="btn btn-default navbar-btn" />
 
-                <label for="answer">Security Answer</label>
-                <input type="text" id="answer"><br>
+                        <label>&nbsp;</label>
+                        <input type="reset" id="clear" value="Clear" class="btn btn-default navbar-btn" />
+                        <br><a href="../index.html">Login Page</a>
+                    </div>
+                </form>
 
-
-                <label>&nbsp;</label>
-                <input type="button" id="register" value="Register"><br>
-
-                <label>&nbsp;</label>
-                <input type="reset" id="clear" value="Clear">
-            </form>
-            <a href="../index.html">Login Page</a>
-        </section>
+            </section>
+        </div>
     </body>
 
 </html>
