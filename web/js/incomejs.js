@@ -16,13 +16,13 @@ $(document).ready(function () {
             
             $.getJSON(url, function (data) {
                 if(data.length > 0){
-                    var outHtml = "";
+                    var outHtml = "<table class=\"table table-striped\"><thead><tr><th>Category</th><th>Budget</th><th>Amount</th></tr></thead><tbody>";
                         for (var i = 0; i < data.length; i++){
-                            outHtml += "<div id=\"data\"><p>" + data[i].name +"</p>"
-                                    + "<p>" + data[i].budget + "</p>"
-                                    + "<p>" + data[i].start_date + "</p>"
-                                    +  "<p>"+data[i].amount+"</p></div>";
+                            outHtml += "<tr><div id=\"data\"><td>" + data[i].name +"</td>"
+                                    + "<td>" + data[i].budget + "</td>"
+                                    +  "<td>"+data[i].amount+"</td></div></tr>";
                         }
+						outHtml += "</tbody></table>";
                        $('#income_data').html(outHtml);     
                 }
                 else{
