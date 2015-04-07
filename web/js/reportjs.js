@@ -15,11 +15,47 @@ $(document).ready(function () {
 
         $.getJSON(url, function (data) {
             if (data.length > 0) {
+                var incomeName = "";
+                var incomeBud = "";
+                var incomeAmt = "";
+                var expenseName = "";
+                var expenseBud = "";
+                var expenseAmt = "";
                 var outHtml = "";
                 for (var i = 0; i < data.length; i++) {
                     outHtml += "<div id=\"data\"><p>" + data[i].name + "</p>"
                             + "<p>" + data[i].amount + "</p>"
                             + "<p>" + data[i].budget + "</p></div>";
+                    if (data[i].name === "income") {
+                        incomeName = data[i].name;
+                        incomeBud = data[i].budget;
+                        incomeAmt = data[i].amount;
+                        
+                    }
+                    else {
+                        expenseName = data[i].name;
+                        expenseBud = data[i].budget;
+                        expenseAmt = data[i].amount;
+                       
+                    }
+                     var chart = AmCharts.makeChart("chartdiv", {
+                        "type": "pie",
+                        "theme": "none",
+                        "dataProvider": [{
+                                "title": "Income",
+                                "value": incomeAmt
+                            }, {
+                                "title": "Expense",
+                                "value": expenseAmt
+                            }],
+                        "titleField": "title",
+                        "valueField": "value",
+                        "labelRadius": 5,
+                        "radius": "30%",
+                        "innerRadius": "60%",
+                        "labelText": "[[title]]"
+                    });
+                    
                 }
                 $('#report_data').html(outHtml);
             }
@@ -31,3 +67,5 @@ $(document).ready(function () {
 
 
 });
+
+
