@@ -21,11 +21,11 @@ $(document).ready(function () {
                 var expenseName = "";
                 var expenseBud = "";
                 var expenseAmt = "";
-                var outHtml = "";
+                var outHtml = "<table class=\"table table-striped\"><thead><tr><th>Category</th><th>Amount</th><th>Budget</th></tr></thead><tbody>";
                 for (var i = 0; i < data.length; i++) {
-                    outHtml += "<div id=\"data\"><p>" + data[i].name + "</p>"
-                            + "<p>" + data[i].amount + "</p>"
-                            + "<p>" + data[i].budget + "</p></div>";
+                    outHtml += "<tr><div id=\"data\"><td>" + data[i].name + "</td>"
+                            + "<td>" + data[i].amount + "</td>"
+                            + "<td>" + data[i].budget + "</td></div></tr>";
                     if (data[i].name === "income") {
                         incomeName = data[i].name;
                         incomeBud = data[i].budget;
@@ -57,6 +57,7 @@ $(document).ready(function () {
                     });
                     
                 }
+                outHtml += "</tbody></table>";
                 $('#report_data').html(outHtml);
             }
             else {
