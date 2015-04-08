@@ -12,7 +12,7 @@ $(document).ready(function () {
     }
     else {
        // console.log("Name: " + name);
-        $("#name").text(name);
+        $("#sname").text(name);
         $("#income").click(function(){
              window.location.href = "./income.html";
         });
