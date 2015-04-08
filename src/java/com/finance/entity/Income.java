@@ -217,7 +217,7 @@ public class Income {
         } catch (Exception ex) {
 
             System.out.println("Exception in delete income details: " + ex.getMessage());
-            return "fail";
+            return "0";
         }
     }
 

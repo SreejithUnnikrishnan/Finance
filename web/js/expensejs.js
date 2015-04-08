@@ -3,6 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var doDelete = function(user, nameCat) {
+    //alert(nameCat + " " +user);
+    $.ajax({
+        url: "../webresources/expense/" + user + "/" + nameCat,
+        dataType: "json",
+        contentType: 'application/json; charset=UTF-8',
+        method: "delete",
+        success: function(data) {
+
+            if (data === "0") {
+
+                $('#error').text("Sorry!!! something went wrong. Try again later!");
+            }
+            else {
+
+                window.location.href = "./expense.html";
+            }
+        }
+    });
+};
 $(document).ready(function() {
     var id = sessionStorage.getItem("id");
     var name = sessionStorage.getItem("name");
@@ -16,11 +36,12 @@ $(document).ready(function() {
 
         $.getJSON(url, function(data) {
             if (data.length > 0) {
-                var outHtml = "<table class=\"table table-striped\"><thead><tr><th>Category</th><th>Budget</th><th>Amount</th></tr></thead><tbody>";
+                var outHtml = "<table class=\"table table-striped\"><thead><tr><th>Category</th><th>Budget</th><th>Amount</th><th></th></tr></thead><tbody>";
                 for (var i = 0; i < data.length; i++) {
                     outHtml += "<tr><div id=\"data\"><td>" + data[i].name + "</td>"
                             + "<td>" + data[i].budget + "</td>"
-                            + "<td>" + data[i].amount + "</td></div></tr>";
+                            + "<td>" + data[i].amount + "</td>"
+                            + "<td><button class=\"btn-default\" onclick=\"doDelete(\'" + id + "\',\'" + data[i].name + "\')\">Delete</button></td></div></tr>";
                 }
                 outHtml += "</tbody></table>";
                 $('#income_data').html(outHtml);

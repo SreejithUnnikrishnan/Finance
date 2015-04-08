@@ -49,9 +49,9 @@ public class ExpenseService {
     }
     
     @DELETE
-    @Path("{id}")
-    public String deleteUserExpense(@PathParam("id") String id) {
-        String result = expense.deleteExpense(id);
+    @Path("{id}/{name}")
+    public String deleteUserExpense(@PathParam("id") String id,@PathParam("name") String name) {
+        String result = expense.deleteExpense(id,name);
         return result;
 
     }

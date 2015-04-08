@@ -193,27 +193,28 @@ public class Expense {
         }
     }
 
-    public String deleteExpense(String id) {
+    public String deleteExpense(String id, String name) {
         int count = 0;
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "DELETE from expense where id = ?";
+            String query = "DELETE from expense where user_id = ? and name = ?";
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, id);
+            pstmt.setString(2, name);
             count = pstmt.executeUpdate();
             if (!connection.isClosed()) {
                 connection.close();
             }
             if (count > 0) {
-                return "success";
+                return "1";
             } else {
 
-                return "fail";
+                return "0";
             }
 
         } catch (Exception ex) {
 
             System.out.println("Exception in delete expense details: " + ex.getMessage());
-            return "fail";
+            return "0";
         }
     }
 
