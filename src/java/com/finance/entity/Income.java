@@ -196,21 +196,22 @@ public class Income {
         }
     }
 
-    public String deleteIncome(String id) {
+    public String deleteIncome(String id, String name) {
         int count = 0;
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "DELETE from income where id = ?";
+            String query = "DELETE from income where user_id = ? and name = ?";
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, id);
+            pstmt.setString(2, name);
             count = pstmt.executeUpdate();
             if (!connection.isClosed()) {
                 connection.close();
             }
             if (count > 0) {
-                return "success";
+                return "1";
             } else {
 
-                return "fail";
+                return "0";
             }
 
         } catch (Exception ex) {

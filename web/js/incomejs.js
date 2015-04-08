@@ -3,18 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var doDelete = function(nameCat) {
-            alert(nameCat);
-//            $.ajax({
-//                url: "./rs/blog/" + id,
-//                dataType: "json",
-//                contentType: 'application/json; charset=UTF-8',
-//                method: "delete",
-//                success: getBlog
-//            });
-        };
+var doDelete = function(user, nameCat) {
+    //alert(nameCat + " " +user);
+    $.ajax({
+        url: "../webresources/income/" + user + "/" + nameCat,
+        dataType: "json",
+        contentType: 'application/json; charset=UTF-8',
+        method: "delete",
+        success: function(data) {
+
+            if (data === "0") {
+
+                $('#error').text("Sorry!!! something went wrong. Try again later!");
+            }
+            else {
+
+                window.location.href = "./income.html";
+            }
+        }
+    });
+};
 $(document).ready(function() {
-    
+
     var id = sessionStorage.getItem("id");
     var name = sessionStorage.getItem("name");
     if (id === null) {
@@ -31,7 +41,7 @@ $(document).ready(function() {
                     outHtml += "<tr><div id=\"data\"><td>" + data[i].name + "</td>"
                             + "<td>" + data[i].budget + "</td>"
                             + "<td>" + data[i].amount + "</td>"
-                            + "<td><button class=\"btn-default\" onclick=\"doDelete(\'" + data[i].name + "\')\">Delete</button></td></div></tr>";
+                            + "<td><button class=\"btn-default\" onclick=\"doDelete(\'" + id + "\',\'" + data[i].name + "\')\">Delete</button></td></div></tr>";
                 }
                 outHtml += "</tbody></table>";
                 $('#income_data').html(outHtml);
@@ -40,9 +50,9 @@ $(document).ready(function() {
                 $("#error").text("No Income Details found!! Please add to continue...");
             }
         });
-        
-        
-        
+
+
+
 
         $("#logout").click(function() {
             sessionStorage.setItem("id", null);

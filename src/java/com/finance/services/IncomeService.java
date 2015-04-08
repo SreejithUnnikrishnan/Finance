@@ -57,9 +57,9 @@ public class IncomeService {
     }
 
     @DELETE
-    @Path("{id}")
-    public String deleteUserIncome(@PathParam("id") String id) {
-        String result = income.deleteIncome(id);
+    @Path("{id}/{name}")
+    public String deleteUserIncome(@PathParam("id") String id,@PathParam("name") String name) {
+        String result = income.deleteIncome(id,name);
         return result;
 
     }
