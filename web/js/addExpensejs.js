@@ -10,6 +10,7 @@ $(document).ready(function() {
         window.location.href = "../index.html";
     }
     else {
+         $("#sname").text(name);
         var catUrl = '../webresources/category/Expense';
         $.getJSON(catUrl, function(data) {
 
@@ -61,6 +62,11 @@ $(document).ready(function() {
                     }
                 });
             }
+        });
+        $("#logout").click(function() {
+            sessionStorage.setItem("id", null);
+            sessionStorage.setItem("name", null);
+            window.location.href = "../index.html";
         });
     }
 });

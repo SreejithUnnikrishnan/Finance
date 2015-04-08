@@ -63,6 +63,12 @@ $(document).ready(function() {
                 });
             }
         });
+
+        $("#logout").click(function() {
+            sessionStorage.setItem("id", null);
+            sessionStorage.setItem("name", null);
+            window.location.href = "../index.html";
+        });
     }
 });
 

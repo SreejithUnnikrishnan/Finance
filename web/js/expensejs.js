@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$(document).ready(function () {
+$(document).ready(function() {
     var id = sessionStorage.getItem("id");
     var name = sessionStorage.getItem("name");
     if (id === null) {
@@ -14,7 +14,7 @@ $(document).ready(function () {
         $("#sname").text(name);
         var url = '../webresources/expense/' + id;
 
-        $.getJSON(url, function (data) {
+        $.getJSON(url, function(data) {
             if (data.length > 0) {
                 var outHtml = "<table class=\"table table-striped\"><thead><tr><th>Category</th><th>Budget</th><th>Amount</th></tr></thead><tbody>";
                 for (var i = 0; i < data.length; i++) {
@@ -31,7 +31,13 @@ $(document).ready(function () {
         });
     }
 
-    $("#addExpense").click(function () {
+    $("#logout").click(function() {
+        sessionStorage.setItem("id", null);
+        sessionStorage.setItem("name", null);
+        window.location.href = "../index.html";
+    });
+
+    $("#addExpense").click(function() {
         window.location.href = "./addExpense.html";
     });
 

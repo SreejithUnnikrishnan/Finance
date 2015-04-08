@@ -22,6 +22,11 @@ $(document).ready(function () {
         $("#report").click(function(){
              window.location.href = "./report.html";
         });
+        $("#logout").click(function(){
+            sessionStorage.setItem("id",null);
+            sessionStorage.setItem("name",null);
+            window.location.href = "../index.html";
+        });
     }
 });
 

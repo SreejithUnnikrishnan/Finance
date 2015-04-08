@@ -64,6 +64,12 @@ $(document).ready(function () {
                 $("#error").text("No Income or Expense Details found for this month!! Please add to continue...");
             }
         });
+        
+        $("#logout").click(function() {
+            sessionStorage.setItem("id", null);
+            sessionStorage.setItem("name", null);
+            window.location.href = "../index.html";
+        });
     }
 
 
