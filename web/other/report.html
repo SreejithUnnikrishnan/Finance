@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Finance:Report</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -31,25 +31,28 @@ and open the template in the editor.
                 height		: 500px;
                 font-size	: 11px;
             }
-            
+
             body {
                 background-image: url('../img/wallpapers.jpg');
             }
-        
+
         </style>
-        
+
     </head>
     <body>
         <div class="container">
             <div class="page-header">
-                <h1 id="name"></h1>
+                <h1 id="name">
+                    <span id="sname"></span>
+                    <input id="logout" type="button" value="Logout" class="btn btn-default pull-right" />
+                </h1>
             </div>
-        
-        <h3 id="error"></h3>
-        <div id="report_data"></div>
-        <div id="chartdivInc"></div>
-        <div id="chartdiv"></div>
-        <a href="welcome.html">Main Page</a>
+
+            <h3 id="error"></h3>
+            <div id="report_data"></div>
+            <div id="chartdivInc"></div>
+            <div id="chartdiv"></div>
+            <a href="welcome.html">Main Page</a>
         </div>
     </body>
 </html>

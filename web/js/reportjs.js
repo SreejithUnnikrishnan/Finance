@@ -10,7 +10,7 @@ $(document).ready(function () {
         window.location.href = "../index.html";
     }
     else {
-        $("#name").text(name);
+        $("#sname").text(name);
         var url = '../webresources/report/' + id;
 
         $.getJSON(url, function (data) {

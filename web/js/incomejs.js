@@ -11,7 +11,7 @@ $(document).ready(function () {
     }
      else {
         
-        $("#name").text(name);
+        $("#sname").text(name);
         var url = '../webresources/income/' + id;
             
             $.getJSON(url, function (data) {
