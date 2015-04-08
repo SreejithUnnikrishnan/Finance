@@ -78,12 +78,12 @@ select * from income where start_date >= DATE_FORMAT(NOW() ,'%Y-%m-01') AND star
 insert into categories (name,cat_type) values ('Salary','Income');
 insert into categories (name,cat_type) values ('Bonus','Income');
 insert into categories (name,cat_type) values ('Sales','Income');
-insert into categories (name,cat_type) values ('Part Time','Income');
-insert into categories (name,cat_type) values ('Other Income','Income');
+insert into categories (name,cat_type) values ('PartTime','Income');
+insert into categories (name,cat_type) values ('OtherIncome','Income');
 insert into categories (name,cat_type) values ('Gas','Expense');
 insert into categories (name,cat_type) values ('Bills','Expense');
 insert into categories (name,cat_type) values ('Rent','Expense');
 insert into categories (name,cat_type) values ('Groceries','Expense');
-insert into categories (name,cat_type) values ('Other Expense','Expense');
+insert into categories (name,cat_type) values ('OtherExpense','Expense');
 
 insert into users (name,password) values ('user','user');
